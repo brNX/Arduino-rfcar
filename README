@@ -1,3 +1,4 @@
 Arduino controlled RF car 
 
-initially using a ftdi connected to the transmitter (using a pygame and pyserial script for the keyboard events)
+V1 using a ftdi connected to the transmitter (using a pygame and pyserial script for the keyboard events)
+V2 using a nunchuck connected to an arduino
