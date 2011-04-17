@@ -31,8 +31,14 @@ void loop(){
 void sendPacket(){
     Serial.write(preamble,5);
     Serial.write(header,3);
-    Serial.write(wchuck.readJoyY());
-    Serial.write(wchuck.readJoyY()^CWORD);
+    if (wchuck.readJoyY() > 190 || wchuck.readJoyY() < 64){
+      Serial.write(wchuck.readJoyY());
+      Serial.write(wchuck.readJoyY()^CWORD);
+    }
+    else{
+      Serial.write(127);
+      Serial.write(127^CWORD);
+    }
     Serial.write(wchuck.readJoyX());
     Serial.write(wchuck.readJoyX()^CWORD);
 }

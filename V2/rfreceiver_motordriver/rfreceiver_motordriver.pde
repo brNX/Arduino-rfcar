@@ -11,11 +11,9 @@
 
 const uint8_t header[3] = { 0x46, 0x67, 0x50 };
 
-#define leftE 11
+#define enablePin 11
 #define leftA 4
 #define leftB 5
-
-#define rightE 6
 #define rightA 7
 #define rightB 8
 
@@ -74,15 +72,13 @@ Packet readValue() {
 }
 
 void setup() {
-	pinMode(leftE, OUTPUT);
-	pinMode(rightE, OUTPUT);
+	pinMode(enablePin, OUTPUT);
 	pinMode(leftA, OUTPUT);
 	pinMode(leftB, OUTPUT);
 	pinMode(rightA, OUTPUT);
 	pinMode(rightB, OUTPUT);
 
-	digitalWrite(leftE, LOW);
-	digitalWrite(rightE, LOW);
+	digitalWrite(enablePin, LOW);
 
 	myservo.attach(servopin);
 
@@ -118,7 +114,5 @@ void loop() {
 	}
 	int value = abs(speed);
 	value = map(value, 0, 128, 0, 255);
-	analogWrite(leftE, value);
-	analogWrite(rightE, value);
+	analogWrite(enablePin, value);
 }
-
